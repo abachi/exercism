@@ -7,12 +7,7 @@
 function distance($a, $b)
 {
 	$size = strlen($a);
-	if($size!=strlen($b)) throw new InvalidArgumentException("DNA strands must be of equal length.", 1);
-	$counter=0;
-	for($i=0; $i<$size; $i++){
-		if($a[$i] != $b[$i]){
-			$counter++;
-		}
-	}
-	return $counter;
+	if($size!=strlen($b))
+		throw new InvalidArgumentException("DNA strands must be of equal length.", 1);
+	return sizeof(array_diff_assoc(str_split($a), str_split($b)));
 }
