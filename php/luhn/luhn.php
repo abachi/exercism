@@ -1,31 +1,27 @@
 <?php
 
-function cleanWhitespaces($digits){
-	return str_replace(' ', '', trim($digits));
-}
-
 function isValid(String $digits){
 	
-	$cleanedDigits = cleanWhitespaces($digits);
+	$cleanedDigits = str_replace(' ', '', $digits);
 	
 	if(!is_numeric($cleanedDigits))
 		return false;
 
-	$digitsLength = strlen($cleanedDigits);
-	if($digitsLength < 2)
+	if(strlen($cleanedDigits) < 2)
 		return false;
-	
-	$sum = 0;
 
-	for ($i=$digitsLength-1; $i > -1  ; $i--) {
-		$isEven = $digitsLength % 2 === 0 ? $i % 2 === 0 : $i % 2 !== 0;
-		$notFirstOne = $i != $digitsLength-1;
-			if($isEven && $notFirstOne){
-				$doubled = intval($cleanedDigits[$i])*2;
-				$sum += ($doubled>9)? $doubled-9 : $doubled;
-			}else{
-				$sum += intval($cleanedDigits[$i]);
-			}
-	}
-	return $sum % 10 === 0;
+	$arrayDigits = array_reverse(str_split($cleanedDigits));
+
+	$mappedArray = array_map(function($key, $digit){
+
+		$doubled = $digit*2;
+
+		if($key % 2 !== 0 )
+			return ($doubled>9)? $doubled - 9 : $doubled;
+		
+		return $digit;
+
+	}, array_keys($arrayDigits), $arrayDigits);
+
+	return array_sum($mappedArray) % 10 === 0;
 }
