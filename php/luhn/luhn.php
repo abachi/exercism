@@ -4,15 +4,11 @@ function cleanWhitespaces($digits){
 	return str_replace(' ', '', trim($digits));
 }
 
-function hasOnlyNumbers($digits){
-	return (preg_match('/[^0-9]/', $digits)) ? false : true;
-}
-
 function isValid(String $digits){
 	
 	$cleanedDigits = cleanWhitespaces($digits);
 	
-	if(!hasOnlyNumbers($cleanedDigits))
+	if(!is_numeric($cleanedDigits))
 		return false;
 
 	$digitsLength = strlen($cleanedDigits);
