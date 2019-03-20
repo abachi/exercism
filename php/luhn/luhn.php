@@ -1,13 +1,10 @@
 <?php
 
-function isValid(String $digits){
+function isValid(String $digits) : bool {
 	
 	$cleanedDigits = str_replace(' ', '', $digits);
 	
-	if(!is_numeric($cleanedDigits))
-		return false;
-
-	if(strlen($cleanedDigits) < 2)
+	if(!is_numeric($cleanedDigits) || strlen($cleanedDigits) < 2)
 		return false;
 
 	$arrayDigits = array_reverse(str_split($cleanedDigits));
