@@ -4,15 +4,15 @@ class School{
 
 	private $roster = [];
 
-	public function add($name, $grade){
-		return $this->roster[$grade][] = $name; 
+	public function add($name, $grade) : void {
+		$this->roster[$grade][] = $name; 
 	}
 
-	public function grade($g){
-		return $this->roster[$g];
+	public function grade($grade) : array {
+		return ($this->roster[$grade]) ? $this->roster[$grade] : [];
 	}
 
-	public function studentsByGradeAlphabetical(){
+	public function studentsByGradeAlphabetical() : array {
 		$students = [];
 		asort($this->roster);
 		foreach ($this->roster as $grade => $names) {
