@@ -1,7 +1,7 @@
 <?php
 
 function isIsogram(string $text) : bool {
-	$letters = str_split(preg_replace('/[^a-zà-ÿ]/', '', strtolower($text)));
+	$letters = str_split(preg_replace('/[^a-zà-ÿÁ-Ý]/', '', mb_strtolower($text)));
 	$repeated = array_filter(array_count_values($letters), function($count){
 		return $count > 1;
 	});
