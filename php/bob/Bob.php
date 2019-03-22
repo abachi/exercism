@@ -11,7 +11,7 @@ class Bob{
 	}
 
 	private function isYellingWithQuestion($sentence){
-		return preg_match('/^[A-Z\s*]+\?$/', $sentence);
+		return $this->isYelling($sentence) && $this->isQuestion($sentence);
 	}
 
 	private function isNotTalking($sentence){
