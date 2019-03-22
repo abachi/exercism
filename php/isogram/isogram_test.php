@@ -53,4 +53,9 @@ class IsogramTest extends PHPUnit\Framework\TestCase
     {
         $this->assertFalse(isIsogram('éléphant'));
     }
+
+    public function testUpperCaseAccentedLetter()
+    {
+        $this->assertFalse(isIsogram('älÄdin'));
+    }
 }
