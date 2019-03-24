@@ -1,10 +1,5 @@
 <?php
 
-//
-// This is only a SKELETON file for the "Run Length Encoding" exercise. It's been provided as a
-// convenience to get you started writing code faster.
-//
-
 function encode(string $input) : string
 {
     return preg_replace_callback('/(.)\1+/', function ($matches) {
