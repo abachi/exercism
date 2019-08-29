@@ -1,20 +1,20 @@
 <?php
 
 
-function squareOfSum($n) : int
+function squareOfSum(int $n) : int
 {
     return pow(array_sum(range(1, $n)), 2);
     
 }
 
-function sumOfSquares($n) : int
+function sumOfSquares(int $n) : int
 {
     return array_sum(array_map(function($number){
         return pow($number, 2);
     }, range(1, $n)));
 }
 
-function difference($n) : int
+function difference(int $n) : int
 {
-    return abs(sumOfSquares($n) - squareOfSum($n));
+    return squareOfSum($n) - sumOfSquares($n);
 }
