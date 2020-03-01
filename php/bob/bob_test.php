@@ -1,5 +1,5 @@
 <?php
-require_once "bob.php";
+require_once "Bob.php";
 
 class BobTest extends PHPUnit\Framework\TestCase
 {
